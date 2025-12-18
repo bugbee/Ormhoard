@@ -1,5 +1,5 @@
-import wizardNameData from '@/data/wizard-names.json';
-import type { WizardNameData } from '@/types/generators';
+import wizardNameData from '@/data/wizard-name-generator.json';
+import type { WizardNameData, EpithetCategory } from '@/types/generators';
 
 const data: WizardNameData = wizardNameData;
 
@@ -28,8 +28,15 @@ export function generateWizardName(): string {
   }
 }
 
-export function generateEpithet(): string {
-  return getRandomElement(data.epithets);
+export function generateEpithet(category?: EpithetCategory): string {
+  if (category) {
+    return getRandomElement(data.epithets[category]);
+  }
+
+  // Random category if none specified
+  const categories: EpithetCategory[] = ['titles', 'compound_nouns', 'of_phrases', 'colorful_titles'];
+  const randomCategory = getRandomElement(categories);
+  return getRandomElement(data.epithets[randomCategory]);
 }
 
 export function combineFullName(name: string, epithet: string | null): string {
@@ -37,4 +44,13 @@ export function combineFullName(name: string, epithet: string | null): string {
     return `${name} ${epithet}`;
   }
   return name;
+}
+
+export function getEpithetCategories(): { value: EpithetCategory; label: string }[] {
+  return [
+    { value: 'titles', label: 'Titles (the Wise)' },
+    { value: 'compound_nouns', label: 'Compound (Starweaver)' },
+    { value: 'of_phrases', label: 'Of Phrases (of the Silver Tower)' },
+    { value: 'colorful_titles', label: 'Colorful (Greycloak)' },
+  ];
 }

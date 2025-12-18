@@ -1,12 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { generateWizardName, generateEpithet, combineFullName } from '@/lib/generators/wizardNames';
+import { generateWizardName, generateEpithet, combineFullName, getEpithetCategories } from '@/lib/generators/wizardNames';
+import type { EpithetCategory } from '@/types/generators';
 
 export default function WizardNameGenerator() {
   const [wizardName, setWizardName] = useState<string>('');
   const [epithet, setEpithet] = useState<string>('');
   const [includeEpithet, setIncludeEpithet] = useState<boolean>(false);
+  const [epithetCategory, setEpithetCategory] = useState<EpithetCategory | 'random'>('random');
+
+  const epithetCategories = getEpithetCategories();
 
   const handleGenerateName = () => {
     const newName = generateWizardName();
@@ -14,7 +18,8 @@ export default function WizardNameGenerator() {
   };
 
   const handleGenerateEpithet = () => {
-    const newEpithet = generateEpithet();
+    const category = epithetCategory === 'random' ? undefined : epithetCategory;
+    const newEpithet = generateEpithet(category);
     setEpithet(newEpithet);
   };
 
@@ -75,6 +80,34 @@ export default function WizardNameGenerator() {
           >
             Include Epithet/Title
           </label>
+        </div>
+
+        {/* Epithet Category Selector */}
+        <div className="mb-4">
+          <label
+            htmlFor="epithetCategory"
+            className={`block text-sm mb-2 ${includeEpithet ? 'text-slate-300' : 'text-slate-500'}`}
+          >
+            Epithet Type
+          </label>
+          <select
+            id="epithetCategory"
+            value={epithetCategory}
+            onChange={(e) => setEpithetCategory(e.target.value as EpithetCategory | 'random')}
+            disabled={!includeEpithet}
+            className={`w-full py-2 px-3 rounded-lg border transition-colors duration-200 ${
+              includeEpithet
+                ? 'bg-slate-700 border-slate-600 text-slate-100 cursor-pointer'
+                : 'bg-slate-800 border-slate-700 text-slate-500 cursor-not-allowed'
+            }`}
+          >
+            <option value="random">Random (All Types)</option>
+            {epithetCategories.map((cat) => (
+              <option key={cat.value} value={cat.value}>
+                {cat.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button

@@ -4,7 +4,12 @@ export interface WizardNameData {
     middles: string[];
     suffixes: string[];
   };
-  epithets: string[];
+  epithets: {
+    titles: string[];
+    compound_nouns: string[];
+    of_phrases: string[];
+    colorful_titles: string[];
+  };
 }
 
 export interface GeneratedWizardName {
@@ -12,3 +17,5 @@ export interface GeneratedWizardName {
   epithet: string | null;
   fullName: string;
 }
+
+export type EpithetCategory = 'titles' | 'compound_nouns' | 'of_phrases' | 'colorful_titles';
