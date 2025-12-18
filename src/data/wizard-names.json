@@ -1,0 +1,45 @@
+{
+  "syllables": {
+    "prefixes": [
+      "Al", "Mor", "Zan", "Eld", "Thal", "Gor", "Fen", "Mal",
+      "Bal", "Sar", "Cor", "Dra", "Vel", "Xan", "Orm", "Rath",
+      "Grim", "Fal", "Nev", "Syl", "Tor", "Ul", "Var", "Wyn"
+    ],
+    "middles": [
+      "an", "or", "en", "ar", "ion", "eth", "un", "ir",
+      "el", "is", "on", "us", "al", "em", "in", "os",
+      "ur", "ax", "eo", "ia"
+    ],
+    "suffixes": [
+      "dric", "wyn", "thor", "mus", "rick", "don", "gar", "bus",
+      "dan", "ric", "mir", "las", "ron", "zar", "tos", "ven",
+      "der", "gon", "ras", "tus", "dor", "nis", "phos", "xis"
+    ]
+  },
+  "epithets": [
+    "the Wise",
+    "the Grand",
+    "the Magnificent",
+    "the Eternal",
+    "the Obscure",
+    "the Wanderer",
+    "the Arcane",
+    "the Mystic",
+    "the Grey",
+    "the White",
+    "the Black",
+    "the Golden",
+    "the Silver",
+    "the Ancient",
+    "the Dreamer",
+    "the Stargazer",
+    "Starweaver",
+    "Flamebinder",
+    "Stormcaller",
+    "Shadowmender",
+    "Runescribe",
+    "Voidwalker",
+    "Frostwhisper",
+    "Lightbringer"
+  ]
+}
